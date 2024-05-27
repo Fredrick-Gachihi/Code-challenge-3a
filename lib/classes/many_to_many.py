@@ -3,56 +3,62 @@ class Article:
         self.author = author
         self.magazine = magazine
         self.title = title
-
+        
 class Author:
     def __init__(self, name):
-        if not isinstance(name, str):
-            raise TypeError("Name should be a string.")
-        if len(name) == 0:
-            raise ValueError("The name should have at least one character.")    
+        if not isinstance(name, str):#To ensure the name is a string
+            raise TypeError("The name must be a string")
+        if len(name) == 0:#To check characters of the name 
+            raise ValueError("Type the auther's name")
         self.name = name
-        self.articles_list = []
-
 
     def articles(self):
-        return self.articles_list
+        pass
 
     def magazines(self):
-        return [article.magazine for article in self.articles_list]
-
+        pass
 
     def add_article(self, magazine, title):
-        article = Article(self, magazine, title)
-        self.articles_list.append(article)
+        pass
 
     def topic_areas(self):
-        return [article.magazine.category for article in self.articles_list]
-
+        pass
 
 class Magazine:
     def __init__(self, name, category):
+        if not isinstance(name, str):
+            raise TypeError("Magazine name must be a string")
+        if not (2 <= len(name) <= 16):
+            raise ValueError("The name should be between 2 and 16 characters long")
+        if not isinstance(category, str):
+            raise TypeError("Magazine category must be a string")
+        if len(category) == 0:
+            raise ValueError("Magazine category must not be empty")
         self.name = name
         self.category = category
-        self.articles_list = []
+
+
+    @property
+    def category(self):
+        return self._category
+    
+
+    @category.setter
+    def category(self, value):
+        if not isinstance(value, str):
+            raise TypeError("Magazine category must be a string")
+        if len(value) == 0:
+            raise ValueError("Magazine category must not be empty")
+        self._category = value
 
     def articles(self):
-        return self.articles_list
+        pass
 
     def contributors(self):
-        return [article.author for article in self.articles_list]
+        pass
 
     def article_titles(self):
-        return [article.title for article in self.articles_list]
+        pass
 
     def contributing_authors(self):
-        author_count = {}
-        for article in self.articles_list:
-            author = article.author
-            if author not in author_count:
-                author_count[author] = 1
-            else:
-                author_count[author] += 1
-
-        return [author for author, count in author_count.items() if count > 2]
-
-# code challenge 1 phase3
+        pass
