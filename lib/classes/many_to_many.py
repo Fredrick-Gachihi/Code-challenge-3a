@@ -13,11 +13,13 @@ class Author:
         self.name = name
         self.articles_list = []
 
+
     def articles(self):
         return self.articles_list
 
     def magazines(self):
         return [article.magazine for article in self.articles_list]
+
 
     def add_article(self, magazine, title):
         article = Article(self, magazine, title)
@@ -25,6 +27,7 @@ class Author:
 
     def topic_areas(self):
         return [article.magazine.category for article in self.articles_list]
+
 
 class Magazine:
     def __init__(self, name, category):
@@ -52,3 +55,4 @@ class Magazine:
 
         return [author for author, count in author_count.items() if count > 2]
 
+# code challenge 1 phase3
